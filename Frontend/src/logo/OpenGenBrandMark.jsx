@@ -1,4 +1,4 @@
-import openGenLogo from './opngen_logo.png';
+import openGenLogo from './opngen_logo1.png';
 
 const OpenGenBrandMark = () => {
   return (
