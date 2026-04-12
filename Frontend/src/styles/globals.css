@@ -508,6 +508,25 @@ select {
   flex-wrap: wrap;
 }
 
+.contact-meta__icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid rgba(21, 55, 96, 0.16);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.95), rgba(236, 246, 255, 0.76));
+  color: #1e4a78;
+  box-shadow: 0 6px 16px rgba(16, 38, 67, 0.08);
+  transform: translateY(2px);
+}
+
+.contact-meta__icon svg {
+  width: 15px;
+  height: 15px;
+}
+
 .contact-meta__link {
   color: #274b78;
   font-weight: 600;

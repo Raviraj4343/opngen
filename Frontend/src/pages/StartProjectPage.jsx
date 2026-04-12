@@ -109,18 +109,35 @@ const ContactPage = () => {
           <p>We review every submission personally and reply with a practical, business-ready action plan.</p>
           <div className="contact-meta">
             <p className="contact-meta__row">
+              <span className="contact-meta__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
+                  <path d="M4.5 7.5L12 13l7.5-5.5" />
+                </svg>
+              </span>
               <strong>Email:</strong>
               <a className="contact-meta__link" href={`mailto:${liveContact.email}`}>
                 {liveContact.email}
               </a>
             </p>
             <p className="contact-meta__row">
+              <span className="contact-meta__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15.5 14.5l-2 2a2 2 0 0 1-2.7.1 20.2 20.2 0 0 1-3.4-3.4 2 2 0 0 1 .1-2.7l2-2a1.8 1.8 0 0 0 .4-1.8l-.8-2.4A1.8 1.8 0 0 0 7.4 3H4.9A1.9 1.9 0 0 0 3 4.9c0 8.3 6.8 15.1 15.1 15.1a1.9 1.9 0 0 0 1.9-1.9v-2.5a1.8 1.8 0 0 0-1.3-1.7l-2.4-.8a1.8 1.8 0 0 0-1.8.4Z" />
+                </svg>
+              </span>
               <strong>Phone:</strong>
               <a className="contact-meta__link" href={phoneHref}>
                 {liveContact.phone}
               </a>
             </p>
             <p className="contact-meta__row">
+              <span className="contact-meta__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20.5 11.4c0 4.7-3.8 8.5-8.5 8.5a8.3 8.3 0 0 1-4-.9L3.5 20.5l1.5-4.3a8.3 8.3 0 0 1-1.1-4.2c0-4.7 3.8-8.5 8.5-8.5s8.1 3.3 8.1 7.9Z" />
+                  <path d="M9.1 9.3c.3-.7 1.2-.7 1.5 0 .3.9 1 1.6 1.9 1.9.7.3.7 1.2 0 1.5-.9.3-1.6 1-1.9 1.9-.3.7-1.2.7-1.5 0-.3-.9-1-1.6-1.9-1.9-.7-.3-.7-1.2 0-1.5.9-.3 1.6-1 1.9-1.9Z" />
+                </svg>
+              </span>
               <strong>WhatsApp:</strong>
               <a className="contact-meta__link" href={whatsappHref} target="_blank" rel="noreferrer">
                 {liveContact.whatsapp}
