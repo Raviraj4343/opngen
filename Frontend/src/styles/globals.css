@@ -492,6 +492,9 @@ select {
 .form-field textarea:focus {
   border-color: rgba(65, 143, 255, 0.7);
   box-shadow: 0 0 0 3px rgba(65, 143, 255, 0.15);
+}
+
+.contact-form__actions {
   grid-column: 1 / -1;
 }
 
@@ -589,10 +592,11 @@ select {
 
 .bottom-nav {
   position: fixed;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  width: min(780px, calc(100% - 24px));
+  inset-inline: 0;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  width: min(760px, calc(100vw - 20px));
+  max-width: calc(100vw - 20px);
+  margin-inline: auto;
   padding: 9px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -603,6 +607,23 @@ select {
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 44px rgba(17, 26, 45, 0.16);
   z-index: 40;
+  overflow: hidden;
+}
+
+.bottom-nav__active-pill {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 24px rgba(17, 26, 45, 0.09);
+  transform-origin: center;
+  transition:
+    left 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.18s ease,
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
 }
 
 .bottom-nav__link {
@@ -612,6 +633,9 @@ select {
   font-size: 0.88rem;
   font-weight: 600;
   color: #2e3a53;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease,
@@ -631,6 +655,18 @@ select {
 .bottom-nav__link--active {
   background: rgba(255, 255, 255, 0.92);
   color: #1a2b44;
+}
+
+.bottom-nav__link--tracked {
+  background: transparent;
+}
+
+.bottom-nav__link--tracked-active {
+  color: #1a2b44;
+}
+
+.bottom-nav:has(.bottom-nav__link--tracked-active) .bottom-nav__active-pill {
+  transform: scale(1.015);
 }
 
 .bottom-nav__link--active-primary {
@@ -721,7 +757,7 @@ select {
   }
 
   .bottom-nav {
-    width: calc(100% - 18px);
+    width: calc(100vw - 18px);
     bottom: 10px;
     padding: 8px;
     gap: 6px;
@@ -750,7 +786,7 @@ select {
   .bottom-nav {
     border-radius: 24px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: calc(100% - 14px);
+    width: calc(100vw - 14px);
   }
 
   .bottom-nav__link {
