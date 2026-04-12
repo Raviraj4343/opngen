@@ -4,7 +4,9 @@ import StatusCard from '@/components/common/StatusCard';
 import PageLoader from '@/components/feedback/PageLoader';
 import { APP_DESCRIPTION } from '@/constants/app.constants';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import akashPhoto from '@/logo/Akash.jpeg';
 import OpenGenBrandMark from '@/logo/OpenGenBrandMark';
+import raviPhoto from '@/logo/Ravi Raj.jpeg';
 import { getBackendHealth } from '@/services/health.service';
 
 const HomePage = () => {
@@ -129,6 +131,72 @@ const HomePage = () => {
         <div className="trust-band__item">
           <span className="section-tag">Quality</span>
           <p>Modern design, stable architecture, and production-minded development from day one.</p>
+        </div>
+      </section>
+
+      <section className="about-section" id="about">
+        <div className="section-heading">
+          <span className="section-tag">About us</span>
+          <h2>Students and developers building OpenGen to help businesses earn trust online.</h2>
+          <p>
+            OpenGen was started to give local businesses and small startups access to modern websites
+            and apps that feel credible, clear, and ready for real growth.
+          </p>
+        </div>
+
+        <div className="about-grid">
+          <article className="about-story">
+            <h3>Who we are</h3>
+            <p>
+              We are a small team of students, developers, and problem-solvers who care about practical
+              work, clean execution, and helping businesses present themselves professionally online.
+            </p>
+            <p>
+              Instead of sounding like a large agency, OpenGen works closely with clients and keeps the
+              process direct, collaborative, and easy to follow.
+            </p>
+          </article>
+
+          <article className="about-story">
+            <h3>Why we started OpenGen</h3>
+            <p>
+              We noticed that many great businesses still lose trust because their digital presence feels
+              outdated or incomplete. OpenGen was created to fix that with modern design, solid development,
+              and work that actually supports leads and growth.
+            </p>
+            <p>
+              Our mission is simple: build websites and apps that make businesses look trustworthy and
+              help them move forward with confidence.
+            </p>
+          </article>
+        </div>
+
+        <div className="team-grid">
+          <article className="team-card">
+            <img className="team-card__image" src={raviPhoto} alt="Ravi, founder and developer at OpenGen" />
+            <div className="team-card__content">
+              <span className="section-tag">Founder</span>
+              <h3>Ravi</h3>
+              <p className="team-card__role">Founder + Developer</p>
+              <p>
+                Ravi leads development at OpenGen and focuses on building polished, production-ready
+                websites and web apps for client projects.
+              </p>
+            </div>
+          </article>
+
+          <article className="team-card">
+            <img className="team-card__image" src={akashPhoto} alt="Akash, co-founder and marketing lead at OpenGen" />
+            <div className="team-card__content">
+              <span className="section-tag">Co-Founder</span>
+              <h3>Akash</h3>
+              <p className="team-card__role">Co-Founder + Marketing</p>
+              <p>
+                Akash drives the marketing side of OpenGen, helping shape communication, positioning,
+                and how each project connects with real customers.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
