@@ -4,6 +4,7 @@ import StatusCard from '@/components/common/StatusCard';
 import PageLoader from '@/components/feedback/PageLoader';
 import { APP_DESCRIPTION } from '@/constants/app.constants';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
+import OpenGenBrandMark from '@/logo/OpenGenBrandMark';
 import { getBackendHealth } from '@/services/health.service';
 
 const HomePage = () => {
@@ -34,9 +35,7 @@ const HomePage = () => {
     <div className="landing-page">
       <section className="hero">
         <div className="hero__topbar">
-          <div>
-            <span className="hero__eyebrow">OpenGen Studio</span>
-          </div>
+          <OpenGenBrandMark />
           <div className="hero__actions">
             <a className="button button--ghost" href="#services">
               What We Build
@@ -49,7 +48,7 @@ const HomePage = () => {
 
         <div className="hero__body">
           <div className="hero__content">
-            <p className="hero__kicker">Websites. Apps. Reliable delivery.</p>
+            <p className="hero__kicker">Small team. Sharp builds. Real business impact.</p>
             <h1>We build modern websites and apps for your business.</h1>
             <p>{APP_DESCRIPTION}</p>
 
@@ -67,10 +66,16 @@ const HomePage = () => {
               <li>Clear communication, practical timelines, and polished final delivery.</li>
               <li>We focus on websites that help you look trustworthy and generate leads.</li>
             </ul>
+
+            <div className="hero__mini-proof">
+              <span>Local-business friendly</span>
+              <span>Startup-ready execution</span>
+              <span>Built to convert visitors into clients</span>
+            </div>
           </div>
 
           <div className="hero__panel">
-            <h2>Why clients choose OpenGen</h2>
+            <h2>Why OpenGen feels different</h2>
             <div className="status-grid">
               <StatusCard label="Service" value="Business websites and web apps" tone="success" />
               <StatusCard label="Approach" value="Small team. Fast collaboration. Personal attention." />
@@ -94,7 +99,7 @@ const HomePage = () => {
       <section className="section-grid" id="services">
         <article className="info-card">
           <span className="section-tag">What we do</span>
-          <h2>Digital presence that helps businesses win trust faster.</h2>
+          <h2>Digital presence that feels premium and works hard for your brand.</h2>
           <p>
             OpenGen helps businesses and early-stage teams launch websites and apps that look modern,
             feel professional, and support real growth.
@@ -115,15 +120,15 @@ const HomePage = () => {
       <section className="trust-band">
         <div className="trust-band__item">
           <span className="section-tag">Trust</span>
-          <p>You work directly with builders, not layers of middle management.</p>
+          <p>You work directly with the builders, so decisions move faster and communication stays clear.</p>
         </div>
         <div className="trust-band__item">
           <span className="section-tag">Clarity</span>
-          <p>We keep the process simple, practical, and easy to follow.</p>
+          <p>We keep the process simple, practical, and easy to understand even if tech is not your world.</p>
         </div>
         <div className="trust-band__item">
           <span className="section-tag">Quality</span>
-          <p>Modern design, stable architecture, and production-minded development.</p>
+          <p>Modern design, stable architecture, and production-minded development from day one.</p>
         </div>
       </section>
 

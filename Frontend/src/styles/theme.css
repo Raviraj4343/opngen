@@ -1,20 +1,23 @@
 :root {
   color-scheme: light;
-  --color-bg: #f4efe6;
-  --color-surface: rgba(255, 250, 243, 0.86);
-  --color-surface-strong: #fffaf2;
-  --color-text: #1f1a14;
-  --color-muted: #655a4f;
-  --color-border: rgba(117, 88, 53, 0.14);
-  --color-accent: #c75c2a;
-  --color-accent-soft: rgba(199, 92, 42, 0.14);
-  --color-success: #247c52;
-  --color-danger: #aa3f32;
-  --shadow-soft: 0 24px 60px rgba(70, 42, 20, 0.1);
-  --radius-xl: 28px;
-  --radius-lg: 20px;
-  --radius-md: 14px;
+  --color-bg: #f8f8f2;
+  --color-surface: rgba(255, 255, 255, 0.7);
+  --color-surface-strong: rgba(255, 255, 255, 0.92);
+  --color-text: #10131a;
+  --color-muted: #586072;
+  --color-border: rgba(16, 19, 26, 0.08);
+  --color-accent: #0f1720;
+  --color-accent-soft: rgba(134, 255, 110, 0.16);
+  --color-success: #0d8f63;
+  --color-danger: #d53f4c;
+  --color-cyan: #5be7ff;
+  --color-lime: #bbff5f;
+  --color-peach: #ff845c;
+  --shadow-soft: 0 30px 80px rgba(21, 31, 54, 0.12);
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
   --container: 1120px;
-  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-heading: Bahnschrift, 'Segoe UI Variable Display', 'Trebuchet MS', sans-serif;
   --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
