@@ -4,12 +4,16 @@ import { APP_ROUTES } from '@/constants/routes.constants';
 import AppShell from '@/layouts/AppShell';
 import HomePage from '@/features/home/pages/HomePage';
 import NotFoundPage from '@/pages/NotFoundPage';
+import StartProjectPage from '@/pages/StartProjectPage';
+import TeamPage from '@/pages/TeamPage';
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route element={<AppShell />}>
         <Route path={APP_ROUTES.home} element={<HomePage />} />
+        <Route path={APP_ROUTES.team} element={<TeamPage />} />
+        <Route path={APP_ROUTES.startProject} element={<StartProjectPage />} />
       </Route>
       <Route path={APP_ROUTES.notFound} element={<NotFoundPage />} />
       <Route path="*" element={<Navigate to={APP_ROUTES.notFound} replace />} />
