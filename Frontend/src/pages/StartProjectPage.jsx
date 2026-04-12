@@ -127,7 +127,7 @@ const ContactPage = () => {
             <input name="phone" type="tel" value={formState.phone} onChange={handleChange} placeholder="Your phone number" />
           </label>
 
-          <label className="form-field">
+          <label className="form-field form-field--full">
             <span>Email</span>
             <input name="email" type="email" value={formState.email} onChange={handleChange} placeholder="you@example.com" />
           </label>

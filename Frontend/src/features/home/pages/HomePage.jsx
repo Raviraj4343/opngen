@@ -112,29 +112,29 @@ const HomePage = () => {
         </div>
 
         <div className="services-grid">
-        <article className="service-card">
-          <span className="service-card__index">01</span>
-          <h3>Website Development</h3>
-          <p>Fast, responsive websites designed to build trust and drive inquiries.</p>
-        </article>
+          <article className="service-card">
+            <span className="service-card__index">01</span>
+            <h3>Website Development</h3>
+            <p>Fast, responsive websites designed to build trust and drive inquiries.</p>
+          </article>
 
-        <article className="service-card">
-          <span className="service-card__index">02</span>
-          <h3>App Development</h3>
-          <p>Custom web apps and dashboards for teams that need more than static pages.</p>
-        </article>
+          <article className="service-card">
+            <span className="service-card__index">02</span>
+            <h3>App Development</h3>
+            <p>Custom web apps and dashboards for teams that need more than static pages.</p>
+          </article>
 
-        <article className="service-card">
-          <span className="service-card__index">03</span>
-          <h3>UI/UX Design</h3>
-          <p>Minimal, user-first interfaces that make your brand look premium.</p>
-        </article>
+          <article className="service-card">
+            <span className="service-card__index">03</span>
+            <h3>UI/UX Design</h3>
+            <p>Minimal, user-first interfaces that make your brand look premium.</p>
+          </article>
 
-        <article className="service-card">
-          <span className="service-card__index">04</span>
-          <h3>Maintenance</h3>
-          <p>Reliable updates, fixes, and support to keep your product healthy after launch.</p>
-        </article>
+          <article className="service-card">
+            <span className="service-card__index">04</span>
+            <h3>Maintenance</h3>
+            <p>Reliable updates, fixes, and support to keep your product healthy after launch.</p>
+          </article>
         </div>
       </section>
 
