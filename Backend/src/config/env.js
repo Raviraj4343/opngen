@@ -16,5 +16,8 @@ export const env = {
   nodeEnv: process.env.NODE_ENV || 'development',
   port: Number(process.env.PORT) || 5600,
   mongoUri: getRequiredEnv('MONGO_URI'),
-  corsOrigin: process.env.CORS_ORIGIN || '*',
+  corsOrigins: (process.env.CORS_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean),
 };
