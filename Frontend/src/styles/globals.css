@@ -377,6 +377,27 @@ select {
   align-items: start;
 }
 
+.contact-card--elevated {
+  border-color: rgba(21, 43, 79, 0.2);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(239, 248, 255, 0.74));
+}
+
+.contact-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-highlights span {
+  padding: 8px 12px;
+  border: 1px solid rgba(19, 29, 50, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  color: #30405f;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 .contact-card__intro,
 .contact-meta {
   display: grid;

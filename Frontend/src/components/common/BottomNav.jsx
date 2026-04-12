@@ -20,10 +20,10 @@ const BottomNav = () => {
         Team
       </Link>
       <Link
-        className={`bottom-nav__link bottom-nav__link--primary ${pathname === APP_ROUTES.startProject ? 'bottom-nav__link--active-primary' : ''}`}
-        to={APP_ROUTES.startProject}
+        className={`bottom-nav__link bottom-nav__link--primary ${pathname === APP_ROUTES.contact ? 'bottom-nav__link--active-primary' : ''}`}
+        to={APP_ROUTES.contact}
       >
-        Start a Project
+        Contact
       </Link>
     </nav>
   );

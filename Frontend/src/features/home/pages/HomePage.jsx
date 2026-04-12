@@ -46,8 +46,8 @@ const HomePage = () => {
             <Link className="button button--ghost" to={APP_ROUTES.team}>
               Team
             </Link>
-            <Link className="button button--primary" to={APP_ROUTES.startProject}>
-              Start a Project
+            <Link className="button button--primary" to={APP_ROUTES.contact}>
+              Contact
             </Link>
           </div>
         </div>
@@ -59,8 +59,8 @@ const HomePage = () => {
             <p>{APP_DESCRIPTION}</p>
 
             <div className="hero__cta-group">
-              <Link className="button button--primary" to={APP_ROUTES.startProject}>
-                Get Free Quote
+              <Link className="button button--primary" to={APP_ROUTES.contact}>
+                Contact Us
               </Link>
               <a className="button button--secondary" href="#process">
                 See Process

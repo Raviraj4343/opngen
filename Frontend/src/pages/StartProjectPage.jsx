@@ -5,7 +5,7 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import OpenGenBrandMark from '@/logo/OpenGenBrandMark';
 import { getContactMeta, submitInquiry } from '@/services/contact.service';
 
-const StartProjectPage = () => {
+const ContactPage = () => {
   const [contactMeta, setContactMeta] = useState(null);
   const [formState, setFormState] = useState({
     name: '',
@@ -19,7 +19,7 @@ const StartProjectPage = () => {
     success: '',
   });
 
-  useDocumentTitle('Start a Project');
+  useDocumentTitle('Contact');
 
   useEffect(() => {
     const loadContactMeta = async () => {
@@ -87,16 +87,22 @@ const StartProjectPage = () => {
           <OpenGenBrandMark />
         </div>
         <div className="section-heading">
-          <span className="section-tag">Start a project</span>
-          <h2>Tell us what you need to build.</h2>
-          <p>Send a quick brief and we will reply with timeline, scope, and next steps.</p>
+          <span className="section-tag">Contact</span>
+          <h2>Let us discuss your website or app.</h2>
+          <p>Share your requirement and get a practical response with scope, timeline, and next steps.</p>
+          <div className="contact-highlights">
+            <span>Response within 24 hours</span>
+            <span>Direct founder communication</span>
+            <span>No agency handoff</span>
+          </div>
         </div>
       </section>
 
-      <section className="section-block contact-card">
+      <section className="section-block contact-card contact-card--elevated">
         <div className="contact-card__intro">
-          <span className="section-tag">Contact</span>
-          <h2>Project inquiry form</h2>
+          <span className="section-tag">Get in touch</span>
+          <h2>Send your project details</h2>
+          <p>We reply by email after reviewing your message. Include your goal and expected timeline.</p>
           <div className="contact-meta">
             <p>
               <strong>Email:</strong> {liveContact.email}
@@ -139,7 +145,7 @@ const StartProjectPage = () => {
 
           <div className="contact-form__actions">
             <button className="button button--primary" type="submit" disabled={formStatus.loading}>
-              {formStatus.loading ? 'Sending...' : 'Send Inquiry'}
+              {formStatus.loading ? 'Sending...' : 'Send Message'}
             </button>
             <a className="button button--secondary" href={`mailto:${liveContact.email}?subject=Project%20Inquiry`}>
               Email Instead
@@ -156,4 +162,4 @@ const StartProjectPage = () => {
   );
 };
 
-export default StartProjectPage;
+export default ContactPage;
