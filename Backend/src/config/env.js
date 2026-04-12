@@ -20,4 +20,8 @@ export const env = {
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean),
+  brevoApiKey: process.env.BREVO_API_KEY || '',
+  contactReceiverEmail: process.env.CONTACT_RECEIVER_EMAIL || '',
+  contactFromEmail: process.env.CONTACT_FROM_EMAIL || '',
+  contactFromName: process.env.CONTACT_FROM_NAME || 'OpenGen Contact Form',
 };

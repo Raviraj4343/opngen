@@ -1,4 +1,5 @@
 import { CONTACT_DETAILS, HTTP_STATUS } from '../constant.js';
+import { sendInquiryEmail } from '../service/mailer.service.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
@@ -22,12 +23,11 @@ export const submitInquiry = asyncHandler(async (req, res) => {
     throw new ApiError(HTTP_STATUS.BAD_REQUEST, 'Please fill in name, phone, email, and message');
   }
 
-  console.log('New OpenGen inquiry received:', {
-    name: name.trim(),
-    phone: phone.trim(),
-    email: email.trim(),
-    message: message.trim(),
-    receivedAt: new Date().toISOString(),
+  await sendInquiryEmail({
+    name,
+    phone,
+    email,
+    message,
   });
 
   return res.status(HTTP_STATUS.CREATED).json(
@@ -37,7 +37,7 @@ export const submitInquiry = asyncHandler(async (req, res) => {
         submitted: true,
         contact: CONTACT_DETAILS,
       },
-      'Inquiry submitted successfully. OpenGen will reach out soon.',
+      'Message sent successfully. OpenGen will reach out soon.',
     ),
   );
 });
