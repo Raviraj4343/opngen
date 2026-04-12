@@ -1,4 +1,4 @@
-import openGenLogo from './opngen_logo1.png';
+import openGenLogo from './opngen_logo.png';
 
 const OpenGenBrandMark = () => {
   return (
@@ -6,7 +6,6 @@ const OpenGenBrandMark = () => {
       <img className="brand-mark__logo" src={openGenLogo} alt="OpenGen official logo" />
       <div className="brand-mark__text">
         <strong>OpenGen</strong>
-        <span>Built by developers for businesses that want to grow online</span>
       </div>
     </div>
   );
