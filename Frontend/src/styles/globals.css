@@ -341,6 +341,7 @@ select {
 
 .section-grid,
 .about-grid,
+.services-grid,
 .trust-band,
 .process-grid,
 .team-grid {
@@ -361,12 +362,17 @@ select {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.services-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .info-card,
 .about-story,
 .process-card,
 .trust-band__item,
 .contact-card,
-.team-card {
+.team-card,
+.service-card {
   padding: 24px;
 }
 
@@ -404,6 +410,45 @@ select {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.7);
+}
+
+.service-card {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(245, 255, 240, 0.7));
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16, 19, 26, 0.14);
+  box-shadow: 0 18px 42px rgba(21, 31, 54, 0.08);
+}
+
+.service-card h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.service-card__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-lime));
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
 }
 
 .team-card {
@@ -512,6 +557,7 @@ select {
   .status-grid,
   .section-grid,
   .about-grid,
+  .services-grid,
   .team-grid,
   .trust-band,
   .process-grid {

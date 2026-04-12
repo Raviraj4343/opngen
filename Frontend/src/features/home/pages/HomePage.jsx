@@ -100,22 +100,58 @@ const HomePage = () => {
 
       <section className="section-grid" id="services">
         <article className="info-card">
-          <span className="section-tag">What we do</span>
-          <h2>Digital presence that feels premium and works hard for your brand.</h2>
+          <span className="section-tag">Services</span>
+          <h2>Clear service packages for businesses that need a strong digital presence.</h2>
           <p>
-            OpenGen helps businesses and early-stage teams launch websites and apps that look modern,
-            feel professional, and support real growth.
+            OpenGen offers focused digital services for businesses that want better design, better
+            credibility, and better customer conversion online.
           </p>
         </article>
 
         <article className="info-card">
-          <span className="section-tag">Services</span>
-          <ul className="info-list">
-            <li>Business websites for shops, cafes, gyms, and coaching centers</li>
-            <li>Landing pages for marketing campaigns and local outreach</li>
-            <li>Custom dashboards and internal tools for growing teams</li>
-            <li>Frontend and backend web app development</li>
-          </ul>
+          <span className="section-tag">What you get</span>
+          <p>
+            Whether you need a brand-new website, a custom app, cleaner product design, or ongoing
+            support, OpenGen can step in with the right build package.
+          </p>
+        </article>
+      </section>
+
+      <section className="services-grid">
+        <article className="service-card">
+          <span className="service-card__index">01</span>
+          <h3>Website Development</h3>
+          <p>
+            Professional business websites, landing pages, and responsive company sites built to
+            improve trust and bring in more leads.
+          </p>
+        </article>
+
+        <article className="service-card">
+          <span className="service-card__index">02</span>
+          <h3>App Development</h3>
+          <p>
+            Custom web apps, dashboards, and business tools for teams that need something more than
+            a basic website.
+          </p>
+        </article>
+
+        <article className="service-card">
+          <span className="service-card__index">03</span>
+          <h3>UI/UX Design</h3>
+          <p>
+            Clean, modern interfaces and user flows that make your brand look premium and your product
+            easier to use.
+          </p>
+        </article>
+
+        <article className="service-card">
+          <span className="service-card__index">04</span>
+          <h3>Maintenance</h3>
+          <p>
+            Ongoing updates, improvements, fixes, and support so your digital presence stays polished,
+            secure, and reliable.
+          </p>
         </article>
       </section>
 
