@@ -67,6 +67,12 @@ const HomePage = () => {
               </a>
             </div>
 
+            <div className="hero__micro-trust" aria-label="Why businesses choose OpenGen">
+              <span>Fast first response</span>
+              <span>Transparent scope</span>
+              <span>Launch + support</span>
+            </div>
+
             <div className="hero__stats" aria-label="OpenGen benefits">
               <article>
                 <strong>Fast Delivery</strong>

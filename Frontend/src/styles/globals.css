@@ -16,10 +16,10 @@ body {
   font-family: var(--font-body);
   color: var(--color-text);
   background:
-    radial-gradient(circle at 8% 6%, rgba(77, 221, 255, 0.26), transparent 30%),
-    radial-gradient(circle at 88% 8%, rgba(255, 180, 124, 0.24), transparent 28%),
-    radial-gradient(circle at 92% 92%, rgba(129, 235, 186, 0.2), transparent 22%),
-    linear-gradient(155deg, #f5f9ff 0%, #fefdf8 50%, #f3fbf8 100%);
+    radial-gradient(circle at 8% 6%, rgba(87, 204, 255, 0.3), transparent 32%),
+    radial-gradient(circle at 88% 8%, rgba(255, 188, 153, 0.24), transparent 30%),
+    radial-gradient(circle at 90% 88%, rgba(123, 230, 201, 0.24), transparent 26%),
+    linear-gradient(155deg, #f4f8ff 0%, #fffdf9 48%, #f2fbf8 100%);
 }
 
 body::before {
@@ -80,8 +80,8 @@ select {
 .empty-state {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.62));
-  backdrop-filter: blur(16px);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.6));
+  backdrop-filter: blur(20px);
   box-shadow: var(--shadow-soft);
 }
 
@@ -91,6 +91,12 @@ select {
   gap: 28px;
   position: relative;
   overflow: hidden;
+}
+
+.hero,
+.section-block,
+.empty-state {
+  isolation: isolate;
 }
 
 .hero--compact {
@@ -107,9 +113,10 @@ select {
   width: 220px;
   height: 220px;
   border-radius: 999px;
-  background: linear-gradient(145deg, rgba(89, 204, 255, 0.34), rgba(106, 167, 255, 0.2));
+  background: linear-gradient(145deg, rgba(87, 204, 255, 0.38), rgba(125, 168, 255, 0.22));
   filter: blur(22px);
   pointer-events: none;
+  animation: aura-drift 10s ease-in-out infinite alternate;
 }
 
 .hero::before {
@@ -120,9 +127,10 @@ select {
   width: 210px;
   height: 210px;
   border-radius: 999px;
-  background: linear-gradient(145deg, rgba(129, 235, 186, 0.35), rgba(255, 186, 133, 0.24));
+  background: linear-gradient(145deg, rgba(123, 230, 201, 0.38), rgba(255, 188, 153, 0.24));
   filter: blur(20px);
   pointer-events: none;
+  animation: aura-drift 12s ease-in-out infinite alternate-reverse;
 }
 
 .hero__topbar,
@@ -184,7 +192,7 @@ select {
 .team-card {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.88), rgba(250, 253, 255, 0.72));
 }
 
 .hero__content,
@@ -214,6 +222,14 @@ select {
   line-height: 0.95;
   letter-spacing: -0.04em;
   max-width: 12ch;
+  text-wrap: balance;
+}
+
+.hero__content h1 {
+  background: linear-gradient(150deg, #132847 0%, #1f4a82 45%, #176578 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero__content p,
@@ -241,7 +257,24 @@ select {
   padding: 12px;
   border-radius: 14px;
   background: linear-gradient(155deg, rgba(255, 255, 255, 0.94), rgba(246, 252, 255, 0.84));
-  border: 1px solid rgba(19, 29, 50, 0.1);
+  border: 1px solid rgba(19, 29, 50, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.hero__micro-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero__micro-trust span {
+  padding: 9px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(23, 55, 101, 0.16);
+  background: rgba(255, 255, 255, 0.74);
+  color: #284569;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .hero__stats strong {
@@ -343,7 +376,7 @@ select {
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, rgba(82, 200, 255, 0.9), rgba(109, 225, 172, 0.85));
+  background: linear-gradient(180deg, rgba(87, 204, 255, 0.92), rgba(123, 230, 201, 0.88));
   opacity: 0.65;
 }
 
@@ -360,7 +393,7 @@ select {
 .team-card:hover {
   transform: translateY(-3px);
   border-color: rgba(19, 29, 50, 0.15);
-  box-shadow: 0 16px 30px rgba(17, 26, 45, 0.1);
+  box-shadow: 0 18px 34px rgba(17, 26, 45, 0.11);
 }
 
 .status-card__label {
@@ -465,6 +498,9 @@ select {
   padding: 22px;
   gap: 16px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    0 12px 26px rgba(16, 31, 58, 0.08);
 }
 
 .form-field {
@@ -483,7 +519,7 @@ select {
   padding: 13px 14px;
   border: 1px solid rgba(19, 29, 50, 0.16);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   color: var(--color-text);
   outline: none;
 }
@@ -568,19 +604,19 @@ select {
   border-radius: 999px;
   font-weight: 700;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease,
-    color 0.2s ease;
+    transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 20px rgba(17, 26, 45, 0.11);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 24px rgba(17, 26, 45, 0.14);
 }
 
 .button--primary {
-  background: linear-gradient(145deg, #162742, #356293);
+  background: linear-gradient(145deg, #16325a, #2f6298);
   color: #fff;
 }
 
@@ -603,7 +639,7 @@ select {
   gap: 7px;
   border-radius: 999px;
   border: 1px solid rgba(19, 29, 50, 0.15);
-  background: linear-gradient(155deg, rgba(248, 252, 255, 0.92), rgba(244, 252, 249, 0.9));
+  background: linear-gradient(155deg, rgba(248, 252, 255, 0.94), rgba(243, 252, 249, 0.92));
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 44px rgba(17, 26, 45, 0.16);
   z-index: 40;
@@ -616,7 +652,7 @@ select {
   bottom: 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 24px rgba(17, 26, 45, 0.09);
+  box-shadow: 0 12px 28px rgba(17, 26, 45, 0.11);
   transform-origin: center;
   transition:
     left 0.38s cubic-bezier(0.16, 1, 0.3, 1),
@@ -716,6 +752,28 @@ select {
   }
 }
 
+@keyframes aura-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(8px, -10px, 0) scale(1.07);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-page > *,
+  .hero::before,
+  .hero::after,
+  .bottom-nav__active-pill,
+  .button,
+  .bottom-nav__link {
+    animation: none;
+    transition: none;
+  }
+}
+
 @media (max-width: 960px) {
   .hero__body,
   .contact-card,
@@ -752,6 +810,10 @@ select {
   .contact-form__actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hero__micro-trust {
+    gap: 8px;
   }
 
   .brand-mark__text span {
@@ -793,5 +855,86 @@ select {
 
   .bottom-nav__link {
     font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-shell {
+    padding: 12px 12px 108px;
+  }
+
+  .landing-page {
+    gap: 14px;
+  }
+
+  .hero,
+  .section-block,
+  .empty-state {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .hero__content,
+  .hero__panel,
+  .service-card,
+  .process-card,
+  .team-card,
+  .contact-form {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .hero__content h1 {
+    font-size: clamp(1.8rem, 9vw, 2.45rem);
+    line-height: 0.98;
+  }
+
+  .hero__micro-trust span,
+  .contact-highlights span {
+    padding: 7px 10px;
+    font-size: 0.74rem;
+  }
+
+  .status-card,
+  .service-card,
+  .process-card {
+    padding: 16px;
+  }
+
+  .service-card h3,
+  .process-card h3,
+  .team-card__content h3 {
+    font-size: 1.14rem;
+  }
+
+  .contact-form {
+    gap: 12px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    padding: 11px 12px;
+  }
+
+  .bottom-nav {
+    width: calc(100vw - 10px);
+    padding: 7px;
+    gap: 5px;
+    border-radius: 18px;
+  }
+
+  .bottom-nav__active-pill {
+    top: 6px;
+    bottom: 6px;
+  }
+
+  .bottom-nav__link {
+    font-size: 0.74rem;
+    padding: 9px 6px;
+  }
+
+  .team-card__image {
+    height: 170px;
+    border-radius: 14px;
   }
 }
