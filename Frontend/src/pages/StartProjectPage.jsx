@@ -40,6 +40,10 @@ const ContactPage = () => {
     whatsapp: '+91 00000 00000',
   };
 
+  const phoneHref = `tel:${liveContact.phone.replace(/\s+/g, '')}`;
+  const whatsappDigits = liveContact.whatsapp.replace(/[^\d]/g, '');
+  const whatsappHref = `https://wa.me/${whatsappDigits}`;
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -88,12 +92,12 @@ const ContactPage = () => {
         </div>
         <div className="section-heading">
           <span className="section-tag">Contact</span>
-          <h2>Let us discuss your website or app.</h2>
-          <p>Share your requirement and get a practical response with scope, timeline, and next steps.</p>
+          <h2>Let us architect your next digital experience.</h2>
+          <p>Share your goals and receive a strategic response with scope, timeline, and clear next steps.</p>
           <div className="contact-highlights">
             <span>Response within 24 hours</span>
-            <span>Direct founder communication</span>
-            <span>No agency handoff</span>
+            <span>Founder-led communication</span>
+            <span>Execution without handoff</span>
           </div>
         </div>
       </section>
@@ -101,17 +105,26 @@ const ContactPage = () => {
       <section className="section-block contact-card contact-card--elevated">
         <div className="contact-card__intro">
           <span className="section-tag">Get in touch</span>
-          <h2>Send your project details</h2>
-          <p>We reply by email after reviewing your message. Include your goal and expected timeline.</p>
+          <h2>Share your project brief</h2>
+          <p>We review every submission personally and reply with a practical, business-ready action plan.</p>
           <div className="contact-meta">
-            <p>
-              <strong>Email:</strong> {liveContact.email}
+            <p className="contact-meta__row">
+              <strong>Email:</strong>
+              <a className="contact-meta__link" href={`mailto:${liveContact.email}`}>
+                {liveContact.email}
+              </a>
             </p>
-            <p>
-              <strong>Phone:</strong> {liveContact.phone}
+            <p className="contact-meta__row">
+              <strong>Phone:</strong>
+              <a className="contact-meta__link" href={phoneHref}>
+                {liveContact.phone}
+              </a>
             </p>
-            <p>
-              <strong>WhatsApp:</strong> {liveContact.whatsapp}
+            <p className="contact-meta__row">
+              <strong>WhatsApp:</strong>
+              <a className="contact-meta__link" href={whatsappHref} target="_blank" rel="noreferrer">
+                {liveContact.whatsapp}
+              </a>
             </p>
           </div>
         </div>
@@ -145,10 +158,10 @@ const ContactPage = () => {
 
           <div className="contact-form__actions">
             <button className="button button--primary" type="submit" disabled={formStatus.loading}>
-              {formStatus.loading ? 'Sending...' : 'Send Message'}
+              {formStatus.loading ? 'Sending...' : 'Send Brief'}
             </button>
             <a className="button button--secondary" href={`mailto:${liveContact.email}?subject=Project%20Inquiry`}>
-              Email Instead
+              Prefer Email
             </a>
           </div>
 

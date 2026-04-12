@@ -54,47 +54,47 @@ const HomePage = () => {
 
         <div className="hero__body">
           <div className="hero__content">
-            <p className="hero__kicker">Modern digital presence for growth-ready businesses</p>
-            <h1>Websites and apps that look sharp and perform better.</h1>
+            <p className="hero__kicker">Premium digital experiences for ambitious businesses</p>
+            <h1>We craft high-trust websites and apps that convert.</h1>
             <p>{APP_DESCRIPTION}</p>
 
             <div className="hero__cta-group">
               <Link className="button button--primary" to={APP_ROUTES.contact}>
-                Contact Us
+                Book a Discovery Call
               </Link>
               <a className="button button--secondary" href="#process">
-                See Process
+                See Our Process
               </a>
             </div>
 
             <div className="hero__micro-trust" aria-label="Why businesses choose OpenGen">
               <span>Fast first response</span>
-              <span>Transparent scope</span>
-              <span>Launch + support</span>
+              <span>Transparent scope and pricing</span>
+              <span>Launch-ready quality</span>
             </div>
 
             <div className="hero__stats" aria-label="OpenGen benefits">
               <article>
                 <strong>Fast Delivery</strong>
-                <span>Lean workflow and clear milestones</span>
+                <span>Lean execution with clear milestones</span>
               </article>
               <article>
-                <strong>Modern UI</strong>
-                <span>Clean interfaces built for trust</span>
+                <strong>Premium Design</strong>
+                <span>Modern interfaces engineered for trust</span>
               </article>
               <article>
-                <strong>Business Focus</strong>
-                <span>Built to convert visitors into leads</span>
+                <strong>Conversion Focus</strong>
+                <span>Structured to turn visitors into inquiries</span>
               </article>
             </div>
           </div>
 
           <div className="hero__panel">
-            <h2>Why OpenGen works</h2>
+            <h2>Why brands choose OpenGen</h2>
             <div className="status-grid">
-              <StatusCard label="Service" value="Business websites and web apps" tone="success" />
-              <StatusCard label="Approach" value="Small team, direct communication, zero agency bloat" />
-              <StatusCard label="Delivery" value="Production-ready code and clean handoff" tone="success" />
+              <StatusCard label="Service" value="Websites and web apps tailored for business growth" tone="success" />
+              <StatusCard label="Approach" value="Direct founder collaboration with zero agency overhead" />
+              <StatusCard label="Delivery" value="Production-ready builds with clean, reliable handoff" tone="success" />
             </div>
 
             <div className="hero__signal">
@@ -114,32 +114,32 @@ const HomePage = () => {
       <section className="section-block" id="services">
         <div className="section-heading">
           <span className="section-tag">Services</span>
-          <h2>Everything you need to launch and grow online.</h2>
+          <h2>Everything required to launch, scale, and stand out online.</h2>
         </div>
 
         <div className="services-grid">
           <article className="service-card">
             <span className="service-card__index">01</span>
             <h3>Website Development</h3>
-            <p>Fast, responsive websites designed to build trust and drive inquiries.</p>
+            <p>High-performance websites designed to build trust and drive qualified leads.</p>
           </article>
 
           <article className="service-card">
             <span className="service-card__index">02</span>
             <h3>App Development</h3>
-            <p>Custom web apps and dashboards for teams that need more than static pages.</p>
+            <p>Custom web apps and dashboards for teams that need speed, scale, and control.</p>
           </article>
 
           <article className="service-card">
             <span className="service-card__index">03</span>
             <h3>UI/UX Design</h3>
-            <p>Minimal, user-first interfaces that make your brand look premium.</p>
+            <p>User-first product design that makes your brand look premium at every touchpoint.</p>
           </article>
 
           <article className="service-card">
             <span className="service-card__index">04</span>
             <h3>Maintenance</h3>
-            <p>Reliable updates, fixes, and support to keep your product healthy after launch.</p>
+            <p>Reliable updates, security fixes, and support that keep your product market-ready.</p>
           </article>
         </div>
       </section>
@@ -147,26 +147,41 @@ const HomePage = () => {
       <section className="section-block process-section" id="process">
         <div className="section-heading">
           <span className="section-tag">Process</span>
-          <h2>Simple process. No chaos.</h2>
+          <h2>A clear process with zero chaos.</h2>
         </div>
 
         <div className="process-grid">
           <article className="process-card">
             <span className="process-card__step">01</span>
             <h3>Discover</h3>
-            <p>We map goals, audience, and scope in one focused kickoff.</p>
+            <p>We align on goals, users, and scope through one focused strategy kickoff.</p>
           </article>
           <article className="process-card">
             <span className="process-card__step">02</span>
             <h3>Design + Build</h3>
-            <p>We craft UI and develop with weekly updates and quick iteration.</p>
+            <p>We design and build in parallel with weekly updates and rapid iteration cycles.</p>
           </article>
           <article className="process-card">
             <span className="process-card__step">03</span>
             <h3>Launch + Support</h3>
-            <p>We ship confidently and stay available for improvements.</p>
+            <p>We launch with confidence and remain available for performance improvements.</p>
           </article>
         </div>
+      </section>
+
+      <section className="section-block results-strip" aria-label="OpenGen outcomes">
+        <article className="results-strip__item">
+          <strong>Premium-first delivery</strong>
+          <span>Design and development that establish trust from the very first impression.</span>
+        </article>
+        <article className="results-strip__item">
+          <strong>Clear communication</strong>
+          <span>Transparent updates, realistic timelines, and clear owner-level communication.</span>
+        </article>
+        <article className="results-strip__item">
+          <strong>Built for conversion</strong>
+          <span>Every section is purpose-built to guide visitors into high-intent inquiries.</span>
+        </article>
       </section>
 
       <BottomNav />

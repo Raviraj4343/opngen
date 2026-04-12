@@ -85,6 +85,11 @@ select {
   box-shadow: var(--shadow-soft);
 }
 
+#services,
+#process {
+  scroll-margin-top: 20px;
+}
+
 .hero {
   padding: 30px;
   display: grid;
@@ -109,7 +114,6 @@ select {
   position: absolute;
   right: -54px;
   top: -64px;
-  width: 180px;
   width: 220px;
   height: 220px;
   border-radius: 999px;
@@ -299,6 +303,7 @@ select {
   font-size: clamp(1.7rem, 3.4vw, 2.4rem);
   line-height: 0.95;
   letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 .section-block {
@@ -307,6 +312,7 @@ select {
   gap: 18px;
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
 }
 
 .section-block::before {
@@ -320,6 +326,7 @@ select {
 .section-heading {
   display: grid;
   gap: 10px;
+  max-width: 760px;
 }
 
 .section-tag,
@@ -494,6 +501,28 @@ select {
   margin: 0;
 }
 
+.contact-meta__row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.contact-meta__link {
+  color: #274b78;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(39, 75, 120, 0.22);
+  transition:
+    color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-meta__link:hover {
+  color: #143863;
+  border-color: rgba(20, 56, 99, 0.45);
+}
+
 .contact-form {
   padding: 22px;
   gap: 16px;
@@ -603,6 +632,8 @@ select {
   padding: 11px 17px;
   border-radius: 999px;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
   transition:
     transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1),
@@ -618,6 +649,20 @@ select {
 .button--primary {
   background: linear-gradient(145deg, #16325a, #2f6298);
   color: #fff;
+}
+
+.button--primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.button--primary:hover::before {
+  opacity: 1;
 }
 
 .button--secondary,
@@ -716,6 +761,33 @@ select {
   color: #fff;
 }
 
+.results-strip {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.results-strip__item {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(20, 35, 63, 0.14);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(245, 252, 255, 0.72));
+}
+
+.results-strip__item strong {
+  font-family: var(--font-heading);
+  font-size: 1.08rem;
+  line-height: 1.1;
+}
+
+.results-strip__item span {
+  color: var(--color-muted);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
 .empty-state {
   display: grid;
   justify-items: start;
@@ -780,7 +852,8 @@ select {
   .services-grid,
   .process-grid,
   .team-grid,
-  .hero__stats {
+  .hero__stats,
+  .results-strip {
     grid-template-columns: 1fr;
   }
 

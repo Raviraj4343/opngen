@@ -1,3 +1,3 @@
 export const APP_NAME = 'OpenGen';
 export const APP_DESCRIPTION =
-  'We build modern websites and apps for businesses that want to look credible, get more customers, and grow faster online.';
+  'We design and build premium websites and web apps that strengthen credibility, increase conversions, and support long-term growth.';
