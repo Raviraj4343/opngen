@@ -14,7 +14,7 @@ export const HTTP_STATUS = {
 };
 
 export const CONTACT_DETAILS = {
-  email: 'hello@opengen.in',
-  phone: '+91 00000 00000',
-  whatsapp: '+91 00000 00000',
+  email: 'raviraj06112005@gmail.com',
+  phone: '+91 8102821639',
+  whatsapp: '+91 8102821639',
 };
