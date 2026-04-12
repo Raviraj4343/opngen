@@ -11,7 +11,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useDocumentTitle('Dashboard');
+  useDocumentTitle('We Build Websites & Apps');
 
   useEffect(() => {
     const fetchHealth = async () => {
@@ -28,37 +28,150 @@ const HomePage = () => {
     void fetchHealth();
   }, []);
 
+  const backendStatus = error ? 'Online build team, backend check pending' : health?.message || 'Systems ready';
+
   return (
-    <section className="hero">
-      <div className="hero__content">
-        <span className="hero__eyebrow">MERN Starter</span>
-        <h1>Production-grade frontend structure for OpenGen.</h1>
-        <p>{APP_DESCRIPTION}</p>
-      </div>
-
-      {isLoading ? (
-        <PageLoader label="Checking backend connection..." />
-      ) : (
-        <div className="status-grid">
-          <StatusCard
-            label="Frontend"
-            value="Ready"
-            tone="success"
-          />
-          <StatusCard
-            label="Backend"
-            value={error ? 'Unavailable' : health?.message || 'Connected'}
-            tone={error ? 'danger' : 'success'}
-          />
-          <StatusCard
-            label="API Base URL"
-            value={import.meta.env.VITE_API_BASE_URL || 'http://localhost:5600/api/v1'}
-          />
+    <div className="landing-page">
+      <section className="hero">
+        <div className="hero__topbar">
+          <div>
+            <span className="hero__eyebrow">OpenGen Studio</span>
+          </div>
+          <div className="hero__actions">
+            <a className="button button--ghost" href="#services">
+              What We Build
+            </a>
+            <a className="button button--primary" href="#contact">
+              Get a Website
+            </a>
+          </div>
         </div>
-      )}
 
-      {error ? <p className="hero__error">{error}</p> : null}
-    </section>
+        <div className="hero__body">
+          <div className="hero__content">
+            <p className="hero__kicker">Websites. Apps. Reliable delivery.</p>
+            <h1>We build modern websites and apps for your business.</h1>
+            <p>{APP_DESCRIPTION}</p>
+
+            <div className="hero__cta-group">
+              <a className="button button--primary" href="#contact">
+                Contact Us
+              </a>
+              <a className="button button--secondary" href="#work-flow">
+                See How We Work
+              </a>
+            </div>
+
+            <ul className="hero__points">
+              <li>Built for local businesses, coaching centers, gyms, cafes, and small startups.</li>
+              <li>Clear communication, practical timelines, and polished final delivery.</li>
+              <li>We focus on websites that help you look trustworthy and generate leads.</li>
+            </ul>
+          </div>
+
+          <div className="hero__panel">
+            <h2>Why clients choose OpenGen</h2>
+            <div className="status-grid">
+              <StatusCard label="Service" value="Business websites and web apps" tone="success" />
+              <StatusCard label="Approach" value="Small team. Fast collaboration. Personal attention." />
+              <StatusCard label="Delivery" value="Modern UI, clean code, production-ready setup" tone="success" />
+            </div>
+
+            <div className="hero__signal">
+              {isLoading ? (
+                <PageLoader label="Checking project systems..." />
+              ) : (
+                <p>
+                  <strong>Build status:</strong> {backendStatus}
+                </p>
+              )}
+              {error ? <p className="hero__error">Backend is not reachable right now, but the site is ready.</p> : null}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-grid" id="services">
+        <article className="info-card">
+          <span className="section-tag">What we do</span>
+          <h2>Digital presence that helps businesses win trust faster.</h2>
+          <p>
+            OpenGen helps businesses and early-stage teams launch websites and apps that look modern,
+            feel professional, and support real growth.
+          </p>
+        </article>
+
+        <article className="info-card">
+          <span className="section-tag">Services</span>
+          <ul className="info-list">
+            <li>Business websites for shops, cafes, gyms, and coaching centers</li>
+            <li>Landing pages for marketing campaigns and local outreach</li>
+            <li>Custom dashboards and internal tools for growing teams</li>
+            <li>Frontend and backend web app development</li>
+          </ul>
+        </article>
+      </section>
+
+      <section className="trust-band">
+        <div className="trust-band__item">
+          <span className="section-tag">Trust</span>
+          <p>You work directly with builders, not layers of middle management.</p>
+        </div>
+        <div className="trust-band__item">
+          <span className="section-tag">Clarity</span>
+          <p>We keep the process simple, practical, and easy to follow.</p>
+        </div>
+        <div className="trust-band__item">
+          <span className="section-tag">Quality</span>
+          <p>Modern design, stable architecture, and production-minded development.</p>
+        </div>
+      </section>
+
+      <section className="process-section" id="work-flow">
+        <div className="section-heading">
+          <span className="section-tag">How we work</span>
+          <h2>A straightforward process from idea to delivery.</h2>
+        </div>
+
+        <div className="process-grid">
+          <article className="process-card">
+            <span className="process-card__step">01</span>
+            <h3>Understand the business</h3>
+            <p>We learn what you do, who you serve, and what your website or app needs to achieve.</p>
+          </article>
+          <article className="process-card">
+            <span className="process-card__step">02</span>
+            <h3>Design and build</h3>
+            <p>We create a clean, modern experience that fits your brand and supports your goals.</p>
+          </article>
+          <article className="process-card">
+            <span className="process-card__step">03</span>
+            <h3>Launch and support</h3>
+            <p>We deliver a usable final product and help you move confidently into the next stage.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="contact-card" id="contact">
+        <div>
+          <span className="section-tag">Start a project</span>
+          <h2>Need a website or app for your business?</h2>
+          <p>
+            If you want a professional digital presence that builds trust and brings in customers,
+            OpenGen is ready to help.
+          </p>
+        </div>
+
+        <div className="contact-card__actions">
+          <a className="button button--primary" href="mailto:hello@opengen.in?subject=Project%20Inquiry">
+            Contact Us
+          </a>
+          <a className="button button--secondary" href="tel:+910000000000">
+            Call OpenGen
+          </a>
+        </div>
+      </section>
+    </div>
   );
 };
 
