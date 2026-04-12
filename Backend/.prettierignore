@@ -1,0 +1,37 @@
+# dependencies
+node_modules
+
+# build outputs
+dist
+build
+.next
+out
+
+# logs
+*.log
+
+# environment files
+.env
+.env.*
+
+# coverage
+coverage
+
+# lock files (optional, keep formatted or ignore based on team)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# public assets
+public
+uploads
+
+# generated files
+*.min.js
+*.bundle.js
+
+# IDE / system files
+.vscode
+.idea
+.DS_Store
+Thumbs.db
