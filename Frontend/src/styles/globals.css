@@ -16,10 +16,10 @@ body {
   font-family: var(--font-body);
   color: var(--color-text);
   background:
-    radial-gradient(circle at 8% 6%, rgba(87, 204, 255, 0.3), transparent 32%),
-    radial-gradient(circle at 88% 8%, rgba(255, 188, 153, 0.24), transparent 30%),
-    radial-gradient(circle at 90% 88%, rgba(123, 230, 201, 0.24), transparent 26%),
-    linear-gradient(155deg, #f4f8ff 0%, #fffdf9 48%, #f2fbf8 100%);
+    radial-gradient(circle at 8% 6%, rgba(99, 214, 255, 0.32), transparent 34%),
+    radial-gradient(circle at 88% 8%, rgba(255, 199, 163, 0.26), transparent 30%),
+    radial-gradient(circle at 90% 88%, rgba(147, 239, 207, 0.26), transparent 28%),
+    linear-gradient(155deg, #eef4ff 0%, #fffdfb 48%, #f0fbf8 100%);
 }
 
 body::before {
@@ -444,7 +444,7 @@ select {
   justify-content: center;
   border-radius: 12px;
   color: #172226;
-  background: linear-gradient(145deg, #76f4cc, #ffd28d);
+  background: linear-gradient(145deg, #92f0cf, #ffd4ac);
 }
 
 .process-card__step {
@@ -666,7 +666,7 @@ select {
 }
 
 .button--primary {
-  background: linear-gradient(145deg, #16325a, #2f6298);
+  background: linear-gradient(145deg, #123563, #2f6daf);
   color: #fff;
 }
 
@@ -750,7 +750,7 @@ select {
 }
 
 .bottom-nav__link--primary {
-  background: linear-gradient(145deg, #162742, #356293);
+  background: linear-gradient(145deg, #123563, #2f6daf);
   color: #fff;
 }
 
@@ -776,7 +776,7 @@ select {
 }
 
 .bottom-nav__link--primary:hover {
-  background: linear-gradient(145deg, #152339, #3c6ca1);
+  background: linear-gradient(145deg, #102f59, #3577b8);
   color: #fff;
 }
 
