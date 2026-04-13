@@ -126,6 +126,14 @@ select {
   overflow: hidden;
 }
 
+.hero--parallax {
+  --parallax-x: 0;
+  --parallax-y: 0;
+  --parallax-scroll: 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
 .hero,
 .section-block,
 .empty-state {
@@ -149,6 +157,12 @@ select {
   filter: blur(22px);
   pointer-events: none;
   animation: aura-drift 10s ease-in-out infinite alternate;
+  transform: translate3d(
+      calc(var(--parallax-x, 0) * 16px),
+      calc(var(--parallax-y, 0) * 10px + var(--parallax-scroll, 0) * -16px),
+      0
+    )
+    scale(1.02);
 }
 
 .hero::before {
@@ -163,6 +177,12 @@ select {
   filter: blur(20px);
   pointer-events: none;
   animation: aura-drift 12s ease-in-out infinite alternate-reverse;
+  transform: translate3d(
+      calc(var(--parallax-x, 0) * -14px),
+      calc(var(--parallax-y, 0) * -10px + var(--parallax-scroll, 0) * 14px),
+      0
+    )
+    scale(1.02);
 }
 
 .hero__topbar,
@@ -260,6 +280,7 @@ select {
   display: grid;
   gap: 20px;
   grid-template-columns: 1.2fr 0.8fr;
+  transform-style: preserve-3d;
 }
 
 .brand-mark {
@@ -308,6 +329,32 @@ select {
 .hero__content,
 .hero__panel {
   padding: 28px;
+}
+
+.hero--parallax .hero__content,
+.hero--parallax .hero__panel {
+  will-change: transform;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero--parallax .hero__content {
+  transform: translate3d(
+      calc(var(--parallax-x, 0) * -10px),
+      calc(var(--parallax-y, 0) * -8px + var(--parallax-scroll, 0) * -10px),
+      20px
+    )
+    rotateY(calc(var(--parallax-x, 0) * -2.2deg))
+    rotateX(calc(var(--parallax-y, 0) * 1.6deg));
+}
+
+.hero--parallax .hero__panel {
+  transform: translate3d(
+      calc(var(--parallax-x, 0) * 10px),
+      calc(var(--parallax-y, 0) * 8px + var(--parallax-scroll, 0) * 10px),
+      12px
+    )
+    rotateY(calc(var(--parallax-x, 0) * 1.8deg))
+    rotateX(calc(var(--parallax-y, 0) * -1.3deg));
 }
 
 .hero__content {
@@ -1203,6 +1250,13 @@ select {
   .cursor-trail-canvas {
     display: none;
   }
+
+  .hero--parallax .hero__content,
+  .hero--parallax .hero__panel,
+  .hero::before,
+  .hero::after {
+    transform: none;
+  }
 }
 
 @media (max-width: 960px) {
@@ -1262,6 +1316,13 @@ select {
 
   .hero__actions {
     display: none;
+  }
+
+  .hero--parallax .hero__content,
+  .hero--parallax .hero__panel,
+  .hero::before,
+  .hero::after {
+    transform: none;
   }
 
   .hero-mobile-menu {

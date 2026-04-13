@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import BottomNav from '@/components/common/BottomNav';
@@ -7,11 +8,83 @@ import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import OpnGenBrandMark from '@/logo/OpnGenBrandMark';
 
 const HomePage = () => {
+  const heroRef = useRef(null);
+
   useDocumentTitle('We Build Websites & Apps');
+
+  useEffect(() => {
+    const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!supportsFinePointer || prefersReducedMotion) {
+      return undefined;
+    }
+
+    const heroNode = heroRef.current;
+
+    if (!heroNode) {
+      return undefined;
+    }
+
+    let frameId = null;
+    let nextX = 0;
+    let nextY = 0;
+
+    const applyPointerParallax = () => {
+      heroNode.style.setProperty('--parallax-x', nextX.toFixed(3));
+      heroNode.style.setProperty('--parallax-y', nextY.toFixed(3));
+      frameId = null;
+    };
+
+    const onPointerMove = (event) => {
+      const rect = heroNode.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+
+      nextX = (x - 0.5) * 2;
+      nextY = (y - 0.5) * 2;
+
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(applyPointerParallax);
+      }
+    };
+
+    const onPointerLeave = () => {
+      nextX = 0;
+      nextY = 0;
+
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(applyPointerParallax);
+      }
+    };
+
+    const onScroll = () => {
+      const rect = heroNode.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || 1;
+      const progress = Math.max(-1, Math.min(1, (viewportHeight * 0.55 - rect.top) / viewportHeight));
+      heroNode.style.setProperty('--parallax-scroll', (progress * 0.65).toFixed(3));
+    };
+
+    heroNode.addEventListener('pointermove', onPointerMove, { passive: true });
+    heroNode.addEventListener('pointerleave', onPointerLeave);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    onScroll();
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      heroNode.removeEventListener('pointermove', onPointerMove);
+      heroNode.removeEventListener('pointerleave', onPointerLeave);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
 
   return (
     <div className="landing-page">
-      <section className="hero">
+      <section className="hero hero--parallax" ref={heroRef}>
         <div className="hero__topbar">
           <OpnGenBrandMark />
 
