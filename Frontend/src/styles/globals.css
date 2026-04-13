@@ -77,6 +77,34 @@ select {
   z-index: 18;
 }
 
+:root[data-performance='lite'] .cursor-trail-canvas {
+  display: none;
+}
+
+:root[data-performance='lite'] body,
+:root[data-performance='lite'] body::after,
+:root[data-performance='lite'] .landing-page > *,
+:root[data-performance='lite'] .hero::before,
+:root[data-performance='lite'] .hero::after,
+:root[data-performance='lite'] .button--primary,
+:root[data-performance='lite'] .bottom-nav__icon {
+  animation: none !important;
+}
+
+:root[data-performance='lite'] .hero,
+:root[data-performance='lite'] .section-block,
+:root[data-performance='lite'] .empty-state,
+:root[data-performance='lite'] .bottom-nav {
+  backdrop-filter: none;
+}
+
+:root[data-performance='lite'] .hero--parallax .hero__content,
+:root[data-performance='lite'] .hero--parallax .hero__panel,
+:root[data-performance='lite'] .hero::before,
+:root[data-performance='lite'] .hero::after {
+  transform: none !important;
+}
+
 .app-shell {
   padding: 28px 20px 112px;
 }

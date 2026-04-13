@@ -15,8 +15,9 @@ const HomePage = () => {
   useEffect(() => {
     const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLiteMode = document.documentElement.getAttribute('data-performance') === 'lite';
 
-    if (!supportsFinePointer || prefersReducedMotion) {
+    if (!supportsFinePointer || prefersReducedMotion || isLiteMode) {
       return undefined;
     }
 

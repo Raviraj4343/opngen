@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
 
-const MAX_POINTS = 180;
-const POINT_LIFE = 76;
+const MAX_POINTS_FULL = 180;
+const MAX_POINTS_LITE = 80;
+const POINT_LIFE_FULL = 76;
+const POINT_LIFE_LITE = 34;
 
 const lerp = (start, end, t) => start + (end - start) * t;
 
@@ -18,8 +20,9 @@ const CursorTrail = () => {
   useEffect(() => {
     const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isLiteMode = document.documentElement.getAttribute('data-performance') === 'lite';
 
-    if (!supportsFinePointer || prefersReducedMotion) {
+    if (!supportsFinePointer || prefersReducedMotion || isLiteMode) {
       return undefined;
     }
 
@@ -38,6 +41,9 @@ const CursorTrail = () => {
     let animationFrameId = null;
     const points = [];
     let isRendering = false;
+    let isPageVisible = !document.hidden;
+    const maxPoints = isLiteMode ? MAX_POINTS_LITE : MAX_POINTS_FULL;
+    const pointLife = isLiteMode ? POINT_LIFE_LITE : POINT_LIFE_FULL;
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -49,9 +55,9 @@ const CursorTrail = () => {
     };
 
     const pushPoint = (x, y) => {
-      points.push({ x, y, life: POINT_LIFE });
-      if (points.length > MAX_POINTS) {
-        points.splice(0, points.length - MAX_POINTS);
+      points.push({ x, y, life: pointLife });
+      if (points.length > maxPoints) {
+        points.splice(0, points.length - maxPoints);
       }
     };
 
@@ -71,7 +77,7 @@ const CursorTrail = () => {
       const dx = clientX - previousX;
       const dy = clientY - previousY;
       const distance = Math.hypot(dx, dy);
-      const steps = Math.max(1, Math.ceil(distance / 8));
+      const steps = Math.max(1, Math.ceil(distance / 10));
 
       for (let index = 1; index <= steps; index += 1) {
         const t = index / steps;
@@ -81,7 +87,7 @@ const CursorTrail = () => {
       previousX = clientX;
       previousY = clientY;
 
-      if (!isRendering) {
+      if (!isRendering && isPageVisible) {
         isRendering = true;
         animationFrameId = window.requestAnimationFrame(render);
       }
@@ -92,7 +98,28 @@ const CursorTrail = () => {
       previousY = null;
     };
 
+    const onVisibilityChange = () => {
+      isPageVisible = !document.hidden;
+
+      if (!isPageVisible && animationFrameId) {
+        window.cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        isRendering = false;
+      }
+
+      if (isPageVisible && points.length > 0 && !animationFrameId) {
+        isRendering = true;
+        animationFrameId = window.requestAnimationFrame(render);
+      }
+    };
+
     const render = (timestamp = 0) => {
+      if (!isPageVisible) {
+        animationFrameId = null;
+        isRendering = false;
+        return;
+      }
+
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       for (let index = points.length - 1; index >= 0; index -= 1) {
@@ -119,7 +146,7 @@ const CursorTrail = () => {
         for (let index = 1; index < points.length; index += 1) {
           const previous = points[index - 1];
           const current = points[index];
-          const intensity = current.life / POINT_LIFE;
+          const intensity = current.life / pointLife;
           const colorT = index / (points.length - 1);
           const rgb = mixColor(startColor, endColor, colorT);
 
@@ -140,7 +167,7 @@ const CursorTrail = () => {
 
       for (let index = 0; index < points.length; index += 1) {
         const point = points[index];
-        const intensity = point.life / POINT_LIFE;
+        const intensity = point.life / pointLife;
         const colorT = index / points.length;
         const rgb = mixColor([88, 216, 197], [54, 127, 214], colorT);
 
@@ -198,6 +225,7 @@ const CursorTrail = () => {
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerleave', onPointerLeave);
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     return () => {
       if (animationFrameId) {
@@ -206,6 +234,7 @@ const CursorTrail = () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerleave', onPointerLeave);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
     };
   }, []);
 
