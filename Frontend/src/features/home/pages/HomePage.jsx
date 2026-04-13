@@ -28,6 +28,7 @@ const HomePage = () => {
     }
 
     let frameId = null;
+    let scrollFrameId = null;
     let nextX = 0;
     let nextY = 0;
 
@@ -59,11 +60,18 @@ const HomePage = () => {
       }
     };
 
-    const onScroll = () => {
+    const applyScrollParallax = () => {
       const rect = heroNode.getBoundingClientRect();
       const viewportHeight = window.innerHeight || 1;
       const progress = Math.max(-1, Math.min(1, (viewportHeight * 0.55 - rect.top) / viewportHeight));
       heroNode.style.setProperty('--parallax-scroll', (progress * 0.65).toFixed(3));
+      scrollFrameId = null;
+    };
+
+    const onScroll = () => {
+      if (!scrollFrameId) {
+        scrollFrameId = window.requestAnimationFrame(applyScrollParallax);
+      }
     };
 
     heroNode.addEventListener('pointermove', onPointerMove, { passive: true });
@@ -75,6 +83,10 @@ const HomePage = () => {
     return () => {
       if (frameId) {
         window.cancelAnimationFrame(frameId);
+      }
+
+      if (scrollFrameId) {
+        window.cancelAnimationFrame(scrollFrameId);
       }
 
       heroNode.removeEventListener('pointermove', onPointerMove);

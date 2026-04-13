@@ -1,9 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-const MAX_POINTS_FULL = 180;
-const MAX_POINTS_LITE = 80;
-const POINT_LIFE_FULL = 76;
-const POINT_LIFE_LITE = 34;
+const MAX_POINTS_FULL = 120;
+const POINT_LIFE_FULL = 46;
 
 const lerp = (start, end, t) => start + (end - start) * t;
 
@@ -42,8 +40,8 @@ const CursorTrail = () => {
     const points = [];
     let isRendering = false;
     let isPageVisible = !document.hidden;
-    const maxPoints = isLiteMode ? MAX_POINTS_LITE : MAX_POINTS_FULL;
-    const pointLife = isLiteMode ? POINT_LIFE_LITE : POINT_LIFE_FULL;
+    const maxPoints = MAX_POINTS_FULL;
+    const pointLife = POINT_LIFE_FULL;
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -77,7 +75,7 @@ const CursorTrail = () => {
       const dx = clientX - previousX;
       const dy = clientY - previousY;
       const distance = Math.hypot(dx, dy);
-      const steps = Math.max(1, Math.ceil(distance / 10));
+      const steps = Math.max(1, Math.ceil(distance / 9));
 
       for (let index = 1; index <= steps; index += 1) {
         const t = index / steps;
@@ -154,18 +152,18 @@ const CursorTrail = () => {
           context.moveTo(previous.x, previous.y);
           context.lineTo(current.x, current.y);
           context.strokeStyle = `rgba(${rgb}, ${0.06 + intensity * 0.3})`;
-          context.lineWidth = 0.8 + intensity * 1.7;
+          context.lineWidth = 0.9 + intensity * 1.45;
           context.lineCap = 'round';
           context.lineJoin = 'round';
-          context.shadowColor = `rgba(${rgb}, ${0.14 + intensity * 0.24})`;
-          context.shadowBlur = 4 + intensity * 14;
+          context.shadowColor = `rgba(${rgb}, ${0.1 + intensity * 0.18})`;
+          context.shadowBlur = 2 + intensity * 6;
           context.stroke();
           context.shadowBlur = 0;
         }
         context.globalCompositeOperation = 'source-over';
       }
 
-      for (let index = 0; index < points.length; index += 1) {
+      for (let index = 0; index < points.length; index += 2) {
         const point = points[index];
         const intensity = point.life / pointLife;
         const colorT = index / points.length;
@@ -177,39 +175,12 @@ const CursorTrail = () => {
         context.fill();
 
         context.beginPath();
-        context.arc(point.x, point.y, 0.8 + intensity * 1.6, 0, Math.PI * 2);
-        context.fillStyle = `rgba(${rgb}, ${0.12 + intensity * 0.36})`;
-        context.shadowColor = `rgba(${rgb}, ${0.22 + intensity * 0.36})`;
-        context.shadowBlur = 8 + intensity * 12;
+        context.arc(point.x, point.y, 0.85 + intensity * 1.35, 0, Math.PI * 2);
+        context.fillStyle = `rgba(${rgb}, ${0.14 + intensity * 0.3})`;
+        context.shadowColor = `rgba(${rgb}, ${0.2 + intensity * 0.22})`;
+        context.shadowBlur = 4 + intensity * 7;
         context.fill();
         context.shadowBlur = 0;
-
-        if (index % 2 === 0 && intensity > 0.12) {
-          context.beginPath();
-          context.arc(point.x, point.y, 0.55 + intensity * 1.25, 0, Math.PI * 2);
-          context.fillStyle = `rgba(236, 250, 255, ${0.2 + intensity * 0.5})`;
-          context.shadowColor = `rgba(195, 233, 255, ${0.28 + intensity * 0.46})`;
-          context.shadowBlur = 10 + intensity * 16;
-          context.fill();
-          context.shadowBlur = 0;
-
-          if (index % 6 === 0) {
-            const sparkleSize = 1 + intensity * 2.1;
-            const sparkleAlpha = 0.15 + intensity * 0.42;
-
-            context.beginPath();
-            context.moveTo(point.x - sparkleSize, point.y);
-            context.lineTo(point.x + sparkleSize, point.y);
-            context.moveTo(point.x, point.y - sparkleSize);
-            context.lineTo(point.x, point.y + sparkleSize);
-            context.strokeStyle = `rgba(232, 246, 255, ${sparkleAlpha})`;
-            context.lineWidth = 0.8 + intensity * 0.8;
-            context.shadowColor = `rgba(188, 229, 255, ${sparkleAlpha})`;
-            context.shadowBlur = 8 + intensity * 10;
-            context.stroke();
-            context.shadowBlur = 0;
-          }
-        }
       }
 
       if (points.length > 0) {
