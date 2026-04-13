@@ -40,9 +40,6 @@ const HomePage = () => {
         <div className="hero__topbar">
           <OpenGenBrandMark />
           <div className="hero__actions">
-            <a className="button button--ghost" href="#services">
-              Services
-            </a>
             <Link className="button button--ghost" to={APP_ROUTES.team}>
               Team
             </Link>

@@ -120,10 +120,10 @@ const BottomNav = () => {
         Process
       </Link>
       <Link
-        className={`bottom-nav__link ${pathname === APP_ROUTES.team ? 'bottom-nav__link--active' : ''}`}
-        to={APP_ROUTES.team}
+        className={`bottom-nav__link ${pathname === APP_ROUTES.faq ? 'bottom-nav__link--active' : ''}`}
+        to={APP_ROUTES.faq}
       >
-        Team
+        FAQ
       </Link>
       <Link
         className={`bottom-nav__link bottom-nav__link--primary ${pathname === APP_ROUTES.contact ? 'bottom-nav__link--active-primary' : ''}`}

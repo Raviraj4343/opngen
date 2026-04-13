@@ -348,6 +348,7 @@ select {
 .services-grid,
 .process-grid,
 .team-grid,
+.faq-grid,
 .status-grid {
   display: grid;
   gap: 16px;
@@ -362,6 +363,10 @@ select {
 }
 
 .team-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.faq-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -608,6 +613,37 @@ select {
   grid-template-columns: 110px 1fr;
   padding: 16px;
   gap: 14px;
+}
+
+.faq-card {
+  border: 1px solid rgba(20, 35, 63, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(246, 252, 255, 0.78));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(19, 29, 50, 0.2);
+  box-shadow: 0 16px 32px rgba(17, 26, 45, 0.11);
+}
+
+.faq-card h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.faq-card p {
+  margin: 10px 0 0;
+  color: var(--color-muted);
+  line-height: 1.65;
 }
 
 .team-card__image {
@@ -871,6 +907,7 @@ select {
   .services-grid,
   .process-grid,
   .team-grid,
+  .faq-grid,
   .hero__stats,
   .results-strip {
     grid-template-columns: 1fr;
@@ -897,11 +934,21 @@ select {
   }
 
   .hero__topbar,
-  .hero__actions,
   .hero__cta-group,
   .contact-form__actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hero__actions {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .hero__actions .button {
+    flex: 1 1 140px;
+    min-width: 0;
   }
 
   .hero__micro-trust {
@@ -1023,6 +1070,15 @@ select {
   .bottom-nav__link {
     font-size: 0.74rem;
     padding: 9px 6px;
+  }
+
+  .hero__actions {
+    gap: 8px;
+  }
+
+  .hero__actions .button {
+    width: 100%;
+    flex: 1 1 100%;
   }
 
   .team-card__image {
