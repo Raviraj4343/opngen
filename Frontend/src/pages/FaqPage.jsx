@@ -1,10 +1,10 @@
 import BottomNav from '@/components/common/BottomNav';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import OpenGenBrandMark from '@/logo/OpenGenBrandMark';
+import OpnGenBrandMark from '@/logo/OpnGenBrandMark';
 
 const FAQ_ITEMS = [
   {
-    question: 'How fast can OpenGen start a project?',
+    question: 'How fast can OpnGen start a project?',
     answer:
       'Most projects begin within 3 to 5 business days after scope lock. You get a kickoff timeline, milestones, and owner-level communication from day one.',
   },
@@ -42,7 +42,7 @@ const FaqPage = () => {
     <div className="landing-page">
       <section className="hero hero--compact">
         <div className="hero__topbar">
-          <OpenGenBrandMark />
+          <OpnGenBrandMark />
         </div>
         <div className="section-heading">
           <span className="section-tag">FAQ</span>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import BottomNav from '@/components/common/BottomNav';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
-import OpenGenBrandMark from '@/logo/OpenGenBrandMark';
+import OpnGenBrandMark from '@/logo/OpnGenBrandMark';
 import { getContactMeta, submitInquiry } from '@/services/contact.service';
 
 const ContactPage = () => {
@@ -35,7 +35,7 @@ const ContactPage = () => {
   }, []);
 
   const liveContact = contactMeta || {
-    email: 'hello@opengen.in',
+    email: 'hello@opngen.in',
     phone: '+91 00000 00000',
     whatsapp: '+91 00000 00000',
   };
@@ -88,7 +88,7 @@ const ContactPage = () => {
     <div className="landing-page">
       <section className="hero hero--compact">
         <div className="hero__topbar">
-          <OpenGenBrandMark />
+          <OpnGenBrandMark />
         </div>
         <div className="section-heading">
           <span className="section-tag">Contact</span>

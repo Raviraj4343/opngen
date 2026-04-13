@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './app/App.jsx';
-import openGenLogo from './logo/opngen_logo.png';
+import opnGenLogo from './logo/opngen_logo.png';
 import './styles/theme.css';
 import './styles/globals.css';
 
@@ -10,14 +10,14 @@ const setBrandFavicon = () => {
   const existingIcon = document.querySelector("link[rel='icon']");
 
   if (existingIcon) {
-    existingIcon.setAttribute('href', openGenLogo);
+    existingIcon.setAttribute('href', opnGenLogo);
     return;
   }
 
   const iconLink = document.createElement('link');
   iconLink.setAttribute('rel', 'icon');
   iconLink.setAttribute('type', 'image/png');
-  iconLink.setAttribute('href', openGenLogo);
+  iconLink.setAttribute('href', opnGenLogo);
   document.head.appendChild(iconLink);
 };
 

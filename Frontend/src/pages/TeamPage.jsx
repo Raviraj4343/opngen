@@ -1,7 +1,7 @@
 import BottomNav from '@/components/common/BottomNav';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import akashPhoto from '@/logo/Akash.jpeg';
-import OpenGenBrandMark from '@/logo/OpenGenBrandMark';
+import OpnGenBrandMark from '@/logo/OpnGenBrandMark';
 import raviPhoto from '@/logo/Ravi Raj.jpeg';
 
 const TeamPage = () => {
@@ -11,7 +11,7 @@ const TeamPage = () => {
     <div className="landing-page">
       <section className="hero hero--compact">
         <div className="hero__topbar">
-          <OpenGenBrandMark />
+          <OpnGenBrandMark />
         </div>
         <div className="section-heading">
           <span className="section-tag">Team</span>
@@ -23,7 +23,7 @@ const TeamPage = () => {
       <section className="section-block about-section">
         <div className="team-grid">
           <article className="team-card">
-            <img className="team-card__image" src={raviPhoto} alt="Ravi, founder and developer at OpenGen" />
+            <img className="team-card__image" src={raviPhoto} alt="Ravi, founder and developer at OpnGen" />
             <div className="team-card__content">
               <span className="section-tag">Founder</span>
               <h3>Ravi</h3>
@@ -33,7 +33,7 @@ const TeamPage = () => {
           </article>
 
           <article className="team-card">
-            <img className="team-card__image" src={akashPhoto} alt="Akash, co-founder and marketing lead at OpenGen" />
+            <img className="team-card__image" src={akashPhoto} alt="Akash, co-founder and marketing lead at OpnGen" />
             <div className="team-card__content">
               <span className="section-tag">Co-Founder</span>
               <h3>Akash</h3>
