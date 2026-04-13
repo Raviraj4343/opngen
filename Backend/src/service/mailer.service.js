@@ -1,4 +1,4 @@
-import { CONTACT_DETAILS, HTTP_STATUS } from '../constant.js';
+import { COMPANY_CONTACT_FORM_NAME, COMPANY_NAME, CONTACT_DETAILS, HTTP_STATUS } from '../constant.js';
 import { env } from '../config/env.js';
 import { ApiError } from '../utils/ApiError.js';
 
@@ -22,7 +22,7 @@ const getBrevoConfig = () => {
   return {
     apiKey: env.brevoApiKey,
     senderEmail,
-    senderName: env.contactFromName || 'OpenGen Contact Form',
+    senderName: env.contactFromName || COMPANY_CONTACT_FORM_NAME,
   };
 };
 
@@ -65,7 +65,7 @@ export const sendInquiryEmail = async ({ name, phone, email, message }) => {
     },
     subject: `New inquiry from ${trimmedName}`,
     textContent: [
-      'New inquiry received from OpenGen website:',
+      `New inquiry received from ${COMPANY_NAME} website:`,
       `Name: ${trimmedName}`,
       `Phone: ${trimmedPhone}`,
       `Email: ${trimmedEmail}`,
@@ -74,7 +74,7 @@ export const sendInquiryEmail = async ({ name, phone, email, message }) => {
       trimmedMessage,
     ].join('\n'),
     htmlContent: `
-      <h2>New inquiry received from OpenGen website</h2>
+      <h2>New inquiry received from ${COMPANY_NAME} website</h2>
       <p><strong>Name:</strong> ${safeName}</p>
       <p><strong>Phone:</strong> ${safePhone}</p>
       <p><strong>Email:</strong> ${safeEmail}</p>
@@ -93,11 +93,11 @@ export const sendInquiryEmail = async ({ name, phone, email, message }) => {
         name: trimmedName,
       },
     ],
-    subject: 'We received your inquiry - OpenGen',
+    subject: `We received your inquiry - ${COMPANY_NAME}`,
     textContent: [
       `Hi ${trimmedName},`,
       '',
-      'Thank you for contacting OpenGen. We have received your inquiry and our team will review it shortly.',
+      `Thank you for contacting ${COMPANY_NAME}. We have received your inquiry and our team will review it shortly.`,
       'You can expect a response with next steps, scope, and timeline soon.',
       '',
       'Your submitted details:',
@@ -114,7 +114,7 @@ export const sendInquiryEmail = async ({ name, phone, email, message }) => {
     htmlContent: `
       <div style="font-family: Arial, Helvetica, sans-serif; color: #13223a; line-height: 1.6; max-width: 640px; margin: 0 auto;">
         <h2 style="margin-bottom: 8px;">Thanks for reaching out, ${safeName}</h2>
-        <p style="margin-top: 0; color: #4a5a77;">We have received your inquiry at OpenGen.</p>
+        <p style="margin-top: 0; color: #4a5a77;">We have received your inquiry at ${COMPANY_NAME}.</p>
         <p>Our team will review your requirements and get back to you with clear next steps, scope, and expected timeline.</p>
 
         <div style="margin: 20px 0; padding: 16px; border: 1px solid #dce4f2; border-radius: 12px; background: #f8fbff;">

@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express from 'express';
 
-import { HTTP_STATUS } from './constant.js';
+import { COMPANY_NAME, HTTP_STATUS } from './constant.js';
 import { env } from './config/env.js';
 import { errorHandler } from './middlewares/error.middleware.js';
 import { notFoundHandler } from './middlewares/notFound.middleware.js';
@@ -35,7 +35,7 @@ const getApiBaseResponse = (_req, res) => {
       {
         healthCheck: '/api/v1/health',
       },
-      'OpenGen backend API is running',
+      `${COMPANY_NAME} backend API is running`,
     ),
   );
 };

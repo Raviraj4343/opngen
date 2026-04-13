@@ -1,4 +1,4 @@
-import { CONTACT_DETAILS, HTTP_STATUS } from '../constant.js';
+import { COMPANY_NAME, CONTACT_DETAILS, HTTP_STATUS } from '../constant.js';
 import { sendInquiryEmail } from '../service/mailer.service.js';
 import { ApiError } from '../utils/ApiError.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
@@ -37,7 +37,7 @@ export const submitInquiry = asyncHandler(async (req, res) => {
         submitted: true,
         contact: CONTACT_DETAILS,
       },
-      'Message sent successfully. OpenGen will reach out soon.',
+      `Message sent successfully. ${COMPANY_NAME} will reach out soon.`,
     ),
   );
 });

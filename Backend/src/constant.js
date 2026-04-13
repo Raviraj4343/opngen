@@ -1,5 +1,7 @@
 export const DB_NAME = 'opngen';
 export const API_PREFIX = '/api/v1';
+export const COMPANY_NAME = 'OpnGen';
+export const COMPANY_CONTACT_FORM_NAME = `${COMPANY_NAME} Contact Form`;
 
 export const HTTP_STATUS = {
   OK: 200,

@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { COMPANY_CONTACT_FORM_NAME } from '../constant.js';
 
 dotenv.config();
 
@@ -23,5 +24,5 @@ export const env = {
   brevoApiKey: process.env.BREVO_API_KEY || '',
   contactReceiverEmail: process.env.CONTACT_RECEIVER_EMAIL || '',
   contactFromEmail: process.env.CONTACT_FROM_EMAIL || '',
-  contactFromName: process.env.CONTACT_FROM_NAME || 'OpenGen Contact Form',
+  contactFromName: process.env.CONTACT_FROM_NAME || COMPANY_CONTACT_FORM_NAME,
 };
