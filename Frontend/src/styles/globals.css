@@ -561,6 +561,14 @@ select {
   overflow: hidden;
 }
 
+.service-card {
+  background: linear-gradient(165deg, rgba(242, 255, 250, 0.9), rgba(251, 255, 253, 0.74));
+}
+
+.process-card {
+  background: linear-gradient(165deg, rgba(241, 248, 255, 0.9), rgba(249, 252, 255, 0.74));
+}
+
 .service-card::before,
 .process-card::before {
   content: '';
@@ -569,8 +577,15 @@ select {
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, rgba(87, 204, 255, 0.92), rgba(123, 230, 201, 0.88));
   opacity: 0.65;
+}
+
+.service-card::before {
+  background: linear-gradient(180deg, rgba(62, 201, 177, 0.95), rgba(94, 213, 244, 0.9));
+}
+
+.process-card::before {
+  background: linear-gradient(180deg, rgba(86, 141, 255, 0.94), rgba(101, 194, 255, 0.9));
 }
 
 .status-card {
@@ -630,12 +645,19 @@ select {
   justify-content: center;
   border-radius: 12px;
   color: #172226;
-  background: linear-gradient(145deg, #92f0cf, #ffd4ac);
+  background: linear-gradient(145deg, #8cf1d0, #b8ecff);
 }
 
 .process-card__step {
-  font-size: 1.6rem;
-  color: #2f4b70;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.22rem;
+  color: #1c3f6d;
+  background: linear-gradient(145deg, #b9dcff, #d3ccff);
 }
 
 .hero__signal {
@@ -797,10 +819,14 @@ select {
 }
 
 .faq-card {
+  display: grid;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
   border: 1px solid rgba(20, 35, 63, 0.14);
   border-radius: var(--radius-lg);
   padding: 20px;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(246, 252, 255, 0.78));
+  background: linear-gradient(160deg, rgba(255, 250, 246, 0.9), rgba(251, 247, 255, 0.8));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
   transition:
     transform 0.25s ease,
@@ -808,10 +834,34 @@ select {
     border-color 0.25s ease;
 }
 
+.faq-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(183, 122, 255, 0.92), rgba(255, 162, 122, 0.86));
+  opacity: 0.7;
+}
+
 .faq-card:hover {
   transform: translateY(-3px);
   border-color: rgba(19, 29, 50, 0.2);
   box-shadow: 0 16px 32px rgba(17, 26, 45, 0.11);
+}
+
+.faq-card__index {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #3d2d58;
+  background: linear-gradient(145deg, #e2ccff, #ffd7be);
 }
 
 .faq-card h3 {
@@ -825,6 +875,54 @@ select {
   margin: 10px 0 0;
   color: var(--color-muted);
   line-height: 1.65;
+}
+
+.faq-cta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(182, 218, 255, 0.28), transparent 46%),
+    radial-gradient(circle at 84% 82%, rgba(255, 206, 166, 0.24), transparent 44%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(246, 250, 255, 0.78));
+}
+
+.faq-cta::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: calc(var(--radius-lg) - 4px);
+  border: 1px solid rgba(50, 84, 133, 0.12);
+  pointer-events: none;
+}
+
+.faq-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.faq-cta__content h2 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  letter-spacing: -0.03em;
+}
+
+.faq-cta__content p {
+  margin: 0;
+  color: var(--color-muted);
+  max-width: 58ch;
+}
+
+.faq-cta__button {
+  margin-top: 6px;
+  min-width: 172px;
+  box-shadow: 0 14px 28px rgba(19, 43, 82, 0.24);
 }
 
 .team-card__image {
@@ -1125,8 +1223,8 @@ select {
 }
 
 .bottom-nav__link--contact .bottom-nav__icon {
-  background: rgba(255, 255, 255, 0.24);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.46);
+  color: #5f320f;
 }
 
 .bottom-nav__link--contact:hover {
@@ -1134,7 +1232,7 @@ select {
 }
 
 .bottom-nav__link--contact .bottom-nav__text {
-  color: #fff;
+  color: #5a2f10;
 }
 
 .results-strip {

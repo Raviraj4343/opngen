@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { APP_ROUTES } from '@/constants/routes.constants';
 
@@ -46,11 +46,50 @@ const NavIcon = ({ type }) => {
 
 const BottomNav = () => {
   const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
   const [activeHomeSection, setActiveHomeSection] = useState('');
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
   const navRef = useRef(null);
   const servicesRef = useRef(null);
   const processRef = useRef(null);
+
+  const scrollToHomeSection = (targetId) => {
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const topOffset = 16;
+    const targetY = Math.max(0, target.getBoundingClientRect().top + window.scrollY - topOffset);
+
+    if (prefersReducedMotion) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const duration = 340;
+    const startTime = performance.now();
+
+    const easeOutCubic = (t) => 1 - (1 - t) ** 3;
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const eased = easeOutCubic(progress);
+
+      window.scrollTo(0, startY + distance * eased);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
 
   useEffect(() => {
     if (pathname !== APP_ROUTES.home) {
@@ -104,6 +143,38 @@ const BottomNav = () => {
   }, [pathname, hash]);
 
   useEffect(() => {
+    if (pathname !== APP_ROUTES.home || !hash) {
+      return;
+    }
+
+    const targetId = hash.replace('#', '');
+
+    if (!['services', 'process'].includes(targetId)) {
+      return;
+    }
+
+    const scrollToTarget = () => {
+      scrollToHomeSection(targetId);
+    };
+
+    const timerId = window.setTimeout(scrollToTarget, 50);
+
+    return () => {
+      window.clearTimeout(timerId);
+    };
+  }, [pathname, hash]);
+
+  const handleTrackedNavClick = (event, targetId) => {
+    if (pathname === APP_ROUTES.home) {
+      event.preventDefault();
+      setActiveHomeSection(targetId);
+      navigate(`${APP_ROUTES.home}#${targetId}`, { replace: false });
+
+      scrollToHomeSection(targetId);
+    }
+  };
+
+  useEffect(() => {
     const updatePill = () => {
       if (pathname !== APP_ROUTES.home || !['services', 'process'].includes(activeHomeSection)) {
         setPillStyle({ left: 0, width: 0, opacity: 0 });
@@ -149,6 +220,7 @@ const BottomNav = () => {
       <Link
         className={`bottom-nav__link bottom-nav__link--services bottom-nav__link--tracked ${pathname === APP_ROUTES.home && activeHomeSection === 'services' ? 'bottom-nav__link--tracked-active' : ''}`}
         to={`${APP_ROUTES.home}#services`}
+        onClick={(event) => handleTrackedNavClick(event, 'services')}
         ref={servicesRef}
       >
         <span className="bottom-nav__icon" aria-hidden="true">
@@ -159,6 +231,7 @@ const BottomNav = () => {
       <Link
         className={`bottom-nav__link bottom-nav__link--process bottom-nav__link--tracked ${pathname === APP_ROUTES.home && activeHomeSection === 'process' ? 'bottom-nav__link--tracked-active' : ''}`}
         to={`${APP_ROUTES.home}#process`}
+        onClick={(event) => handleTrackedNavClick(event, 'process')}
         ref={processRef}
       >
         <span className="bottom-nav__icon" aria-hidden="true">

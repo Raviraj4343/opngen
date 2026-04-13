@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+
 import BottomNav from '@/components/common/BottomNav';
+import { APP_ROUTES } from '@/constants/routes.constants';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import OpnGenBrandMark from '@/logo/OpnGenBrandMark';
 
@@ -53,12 +56,24 @@ const FaqPage = () => {
 
       <section className="section-block faq-section" aria-label="Frequently asked questions">
         <div className="faq-grid">
-          {FAQ_ITEMS.map((item) => (
+          {FAQ_ITEMS.map((item, index) => (
             <article className="faq-card" key={item.question}>
+              <span className="faq-card__index">{String(index + 1).padStart(2, '0')}</span>
               <h3>{item.question}</h3>
               <p>{item.answer}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="section-block faq-cta" aria-label="Still have questions">
+        <div className="faq-cta__content">
+          <span className="section-tag">Need More Help?</span>
+          <h2>Have more questions? Ask us directly.</h2>
+          <p>Share your goals and get founder-level guidance with clear next steps.</p>
+          <Link className="button button--primary faq-cta__button" to={APP_ROUTES.contact}>
+            Contact Us
+          </Link>
         </div>
       </section>
 
