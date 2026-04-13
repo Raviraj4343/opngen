@@ -37,6 +37,7 @@ const CursorTrail = () => {
 
     let animationFrameId = null;
     const points = [];
+    let isRendering = false;
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -79,6 +80,11 @@ const CursorTrail = () => {
 
       previousX = clientX;
       previousY = clientY;
+
+      if (!isRendering) {
+        isRendering = true;
+        animationFrameId = window.requestAnimationFrame(render);
+      }
     };
 
     const onPointerLeave = () => {
@@ -86,7 +92,7 @@ const CursorTrail = () => {
       previousY = null;
     };
 
-    const render = () => {
+    const render = (timestamp = 0) => {
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       for (let index = points.length - 1; index >= 0; index -= 1) {
@@ -98,8 +104,17 @@ const CursorTrail = () => {
 
       if (points.length > 1) {
         context.globalCompositeOperation = 'lighter';
-        const startColor = [54, 127, 214];
-        const endColor = [88, 216, 197];
+        const wave = (Math.sin(timestamp * 0.0026) + 1) / 2;
+        const startColor = [
+          Math.round(lerp(52, 132, wave)),
+          Math.round(lerp(123, 88, wave)),
+          Math.round(lerp(222, 249, wave)),
+        ];
+        const endColor = [
+          Math.round(lerp(86, 171, wave)),
+          Math.round(lerp(216, 152, wave)),
+          Math.round(lerp(197, 242, wave)),
+        ];
 
         for (let index = 1; index < points.length; index += 1) {
           const previous = points[index - 1];
@@ -150,14 +165,35 @@ const CursorTrail = () => {
           context.shadowBlur = 10 + intensity * 16;
           context.fill();
           context.shadowBlur = 0;
+
+          if (index % 6 === 0) {
+            const sparkleSize = 1 + intensity * 2.1;
+            const sparkleAlpha = 0.15 + intensity * 0.42;
+
+            context.beginPath();
+            context.moveTo(point.x - sparkleSize, point.y);
+            context.lineTo(point.x + sparkleSize, point.y);
+            context.moveTo(point.x, point.y - sparkleSize);
+            context.lineTo(point.x, point.y + sparkleSize);
+            context.strokeStyle = `rgba(232, 246, 255, ${sparkleAlpha})`;
+            context.lineWidth = 0.8 + intensity * 0.8;
+            context.shadowColor = `rgba(188, 229, 255, ${sparkleAlpha})`;
+            context.shadowBlur = 8 + intensity * 10;
+            context.stroke();
+            context.shadowBlur = 0;
+          }
         }
       }
 
-      animationFrameId = window.requestAnimationFrame(render);
+      if (points.length > 0) {
+        animationFrameId = window.requestAnimationFrame(render);
+      } else {
+        isRendering = false;
+        animationFrameId = null;
+      }
     };
 
     resizeCanvas();
-    render();
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
