@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
 import BottomNav from '@/components/common/BottomNav';
+import { DEFAULT_CONTACT_DETAILS } from '@/constants/contact.constants';
 import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import OpnGenBrandMark from '@/logo/OpnGenBrandMark';
-import { getContactMeta, submitInquiry } from '@/services/contact.service';
+import { getContactMeta, readCachedContactMeta, submitInquiry } from '@/services/contact.service';
 
 const ContactPage = () => {
-  const [contactMeta, setContactMeta] = useState(null);
+  const [contactMeta, setContactMeta] = useState(() => readCachedContactMeta());
   const [formState, setFormState] = useState({
     name: '',
     phone: '',
@@ -25,19 +26,21 @@ const ContactPage = () => {
     const loadContactMeta = async () => {
       try {
         const contactResponse = await getContactMeta();
-        setContactMeta(contactResponse?.data?.contact || null);
+        setContactMeta((current) => ({
+          ...current,
+          ...(contactResponse?.data?.contact || {}),
+        }));
       } catch {
-        setContactMeta(null);
+        setContactMeta((current) => current || DEFAULT_CONTACT_DETAILS);
       }
     };
 
     void loadContactMeta();
   }, []);
 
-  const liveContact = contactMeta || {
-    email: 'hello@opngen.in',
-    phone: '+91 00000 00000',
-    whatsapp: '+91 00000 00000',
+  const liveContact = {
+    ...DEFAULT_CONTACT_DETAILS,
+    ...contactMeta,
   };
 
   const phoneHref = `tel:${liveContact.phone.replace(/\s+/g, '')}`;

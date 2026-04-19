@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-const MAX_POINTS_FULL = 120;
-const POINT_LIFE_FULL = 46;
+const MAX_POINTS_FULL = 72;
+const POINT_LIFE_FULL = 34;
 
 const lerp = (start, end, t) => start + (end - start) * t;
 
@@ -19,8 +19,9 @@ const CursorTrail = () => {
     const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isLiteMode = document.documentElement.getAttribute('data-performance') === 'lite';
+    const isNarrowViewport = window.innerWidth < 1280;
 
-    if (!supportsFinePointer || prefersReducedMotion || isLiteMode) {
+    if (!supportsFinePointer || prefersReducedMotion || isLiteMode || isNarrowViewport) {
       return undefined;
     }
 
@@ -75,7 +76,7 @@ const CursorTrail = () => {
       const dx = clientX - previousX;
       const dy = clientY - previousY;
       const distance = Math.hypot(dx, dy);
-      const steps = Math.max(1, Math.ceil(distance / 9));
+      const steps = Math.max(1, Math.ceil(distance / 14));
 
       for (let index = 1; index <= steps; index += 1) {
         const t = index / steps;
@@ -151,12 +152,12 @@ const CursorTrail = () => {
           context.beginPath();
           context.moveTo(previous.x, previous.y);
           context.lineTo(current.x, current.y);
-          context.strokeStyle = `rgba(${rgb}, ${0.06 + intensity * 0.3})`;
-          context.lineWidth = 0.9 + intensity * 1.45;
+          context.strokeStyle = `rgba(${rgb}, ${0.05 + intensity * 0.2})`;
+          context.lineWidth = 0.8 + intensity * 1.05;
           context.lineCap = 'round';
           context.lineJoin = 'round';
           context.shadowColor = `rgba(${rgb}, ${0.1 + intensity * 0.18})`;
-          context.shadowBlur = 2 + intensity * 6;
+          context.shadowBlur = 2 + intensity * 4;
           context.stroke();
           context.shadowBlur = 0;
         }
@@ -170,15 +171,15 @@ const CursorTrail = () => {
         const rgb = mixColor([88, 216, 197], [54, 127, 214], colorT);
 
         context.beginPath();
-        context.arc(point.x, point.y, 2 + intensity * 4.2, 0, Math.PI * 2);
-        context.fillStyle = `rgba(${rgb}, ${0.02 + intensity * 0.08})`;
+        context.arc(point.x, point.y, 1.8 + intensity * 3.1, 0, Math.PI * 2);
+        context.fillStyle = `rgba(${rgb}, ${0.02 + intensity * 0.06})`;
         context.fill();
 
         context.beginPath();
-        context.arc(point.x, point.y, 0.85 + intensity * 1.35, 0, Math.PI * 2);
-        context.fillStyle = `rgba(${rgb}, ${0.14 + intensity * 0.3})`;
+        context.arc(point.x, point.y, 0.8 + intensity * 1.1, 0, Math.PI * 2);
+        context.fillStyle = `rgba(${rgb}, ${0.12 + intensity * 0.22})`;
         context.shadowColor = `rgba(${rgb}, ${0.2 + intensity * 0.22})`;
-        context.shadowBlur = 4 + intensity * 7;
+        context.shadowBlur = 3 + intensity * 5;
         context.fill();
         context.shadowBlur = 0;
       }
